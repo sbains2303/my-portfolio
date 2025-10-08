@@ -1,20 +1,46 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ProjectsPage from "./components/ProjectCard";
+import Experience from "./components/Experience";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 text-gray-900">
+    <div className="flex flex-col text-white scroll-smooth">
       <Navbar />
-      <Hero />
-      <ProjectsPage />
-      <h1 className="text-5xl font-bold mb-4 text-blue-600">
-        Welcome to My Portfolio
-      </h1>
-      <p className="text-lg text-gray-700">
-        Built with Next.js, TypeScript, and Tailwind CSS
-      </p>
-    </main>
+
+      <main className="flex flex-col items-center justify-center flex-grow">
+        <section id="Home" className="w-full min-h-screen relative">
+          <Hero />
+        </section>
+
+        <section id="About" className="w-full min-h-screen relative">
+          <About />
+        </section>
+
+        <section id="Projects" className="w-full min-h-screen relative">
+          <ProjectsPage />
+        </section>
+
+        <section id="Experience" className="w-full min-h-screen relative">
+          <Experience />
+        </section>
+
+        <section id="Skills" className="w-full min-h-screen relative">
+          <Skills />
+        </section>
+
+        <section id="Contact" className="w-full min-h-screen relative">
+          <Contact />
+        </section>
+      </main>
+
+      <footer className="w-full py-6 bg-gray-900 text-center text-gray-400">
+        © {new Date().getFullYear()} Saihajpreet Bains. All rights reserved.
+      </footer>
+    </div>
+
   );
 }
-
