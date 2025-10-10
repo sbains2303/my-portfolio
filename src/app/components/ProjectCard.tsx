@@ -61,9 +61,14 @@ const projects: ProjectCardProps[] = [
 
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] }, // ✅ cubic-bezier easing
+  },
 };
+
 
 // Component for parallax effect
 const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
