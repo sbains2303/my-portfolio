@@ -8,18 +8,15 @@ export default function Navbar() {
   const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Track visible section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
           const offsetTop = window.scrollY + rect.top;
           const offsetBottom = offsetTop + el.offsetHeight;
-
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
             setActiveSection(section);
             break;
@@ -27,12 +24,10 @@ export default function Navbar() {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Move slider bubble
   useEffect(() => {
     const index = sections.indexOf(activeSection);
     const btn = buttonRefs.current[index];
@@ -49,8 +44,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full shadow-lg z-50">
-      <div className="relative inline-flex space-x-6">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-xl px-2 py-2 rounded-full shadow-lg z-50 w-[95vw] max-w-xl md:max-w-2xl">
+      <div className="relative flex overflow-x-auto no-scrollbar space-x-4 md:space-x-6 px-2"
+        style={{ WebkitOverflowScrolling: "touch" }}>
         {/* Gradient Bubble Slider */}
         <span
           className="absolute top-0 bottom-0 rounded-full transition-all duration-500"
@@ -71,9 +67,10 @@ export default function Navbar() {
               buttonRefs.current[idx] = el;
             }}
             onClick={() => handleClick(section)}
-            className={`relative z-10 px-4 py-1 text-white transition-colors duration-300 ${
+            className={`relative z-10 px-3 py-1 text-base md:text-lg text-white transition-colors duration-300 ${
               activeSection === section ? "text-blue-400 font-semibold" : "hover:text-blue-300"
             }`}
+            style={{ scrollSnapAlign: "center" }}
           >
             {section}
           </button>
@@ -82,3 +79,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

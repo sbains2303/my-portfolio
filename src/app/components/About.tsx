@@ -13,10 +13,10 @@ export default function About() {
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const highlightClass = "text-blue-600 dark:text-blue-400 font-semibold";
+  const highlightClass = "text-blue-600 dark:text-blue-400 font-semibold break-words";
 
   return (
-    <section className="relative flex flex-col items-center py-16 px-6 overflow-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+    <section className="relative flex flex-col items-center py-16 px-4 sm:px-6 overflow-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
       <div
         className="absolute inset-0 -z-10 opacity-30 dark:opacity-40"
         style={{
@@ -26,14 +26,14 @@ export default function About() {
       ></div>
 
       <div className="relative w-full flex flex-col items-center mb-12">
-        <h2 className="text-5xl md:text-6xl font-extrabold text-blue-600 dark:text-blue-400 mb-4 text-center">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-600 dark:text-blue-400 mb-4 text-center break-words max-w-full">
           About Me
         </h2>
         <div className="w-24 h-1 bg-blue-500 dark:bg-blue-400 rounded-full opacity-70"></div>
       </div>
 
       <p
-        className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mb-6 transition-opacity duration-1000 ${
+        className={`text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mb-6 transition-opacity duration-1000 break-words ${
           visible[0] ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -43,7 +43,7 @@ export default function About() {
       </p>
 
       <p
-        className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mb-6 transition-opacity duration-1000 ${
+        className={`text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mb-6 transition-opacity duration-1000 break-words ${
           visible[1] ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -52,7 +52,7 @@ export default function About() {
       </p>
 
       <p
-        className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl transition-opacity duration-1000 ${
+        className={`text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl transition-opacity duration-1000 break-words ${
           visible[2] ? "opacity-100" : "opacity-0"
         }`}
       >

@@ -24,7 +24,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen text-center overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-screen text-center overflow-hidden px-4">
       {/* Radial gradient background using inline style */}
       <div
         className="absolute inset-0 -z-10"
@@ -34,13 +34,13 @@ export default function Hero() {
       ></div>
 
       <h1
-        className="text-6xl md:text-7xl font-extrabold text-white mb-8"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-8 break-words max-w-full"
         style={{ fontFamily: "'San Francisco', sans-serif" }}
       >
         Hi, I’m Saihajpreet
       </h1>
 
-      <p className="text-3xl md:text-4xl font-semibold text-white mb-4">
+      <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-4 break-words max-w-full">
         I’m a{" "}
         <span
           className={`transition-opacity duration-500 inline-block ${
@@ -51,7 +51,7 @@ export default function Hero() {
         </span>
       </p>
 
-      <p className="text-xl md:text-2xl font-medium text-blue-300 max-w-3xl mx-auto">
+      <p className="text-base sm:text-lg md:text-xl font-medium text-blue-300 max-w-3xl mx-auto break-words">
         Passionate about building modern applications with AI, web technologies, and scalable backend systems.
       </p>
     </section>

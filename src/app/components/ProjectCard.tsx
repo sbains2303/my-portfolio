@@ -68,9 +68,7 @@ const fadeInUp = {
   },
 };
 
-// ParallaxMedia component
 const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
-  // Only use framer-motion hooks in client components
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
@@ -83,7 +81,7 @@ const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
         loop
         muted
         playsInline
-        className="w-full h-64 md:h-80 object-contain"
+        className="w-full h-48 sm:h-64 md:h-80 object-contain"
       />
     );
   }
@@ -92,9 +90,9 @@ const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
     return (
       <motion.div
         style={{ y }}
-        className="w-full h-64 md:h-80 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 flex items-center justify-center"
+        className="w-full h-48 sm:h-64 md:h-80 bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 flex items-center justify-center"
       >
-        <span className="text-white text-6xl animate-pulse">🎵</span>
+        <span className="text-white text-5xl sm:text-6xl animate-pulse break-words">🎵</span>
       </motion.div>
     );
   }
@@ -104,7 +102,7 @@ const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
       style={{ y }}
       src={src}
       alt={title}
-      className="w-full h-64 md:h-80 object-contain transition-transform duration-700 hover:scale-105"
+      className="w-full h-48 sm:h-64 md:h-80 object-contain transition-transform duration-700 hover:scale-105"
     />
   );
 };
@@ -126,29 +124,29 @@ const ProjectCard: React.FC<ProjectCardProps & { index: number }> = ({
       viewport={{ once: true, amount: 0.2 }}
       className={`flex flex-col ${
         isReversed ? "md:flex-row-reverse" : "md:flex-row"
-      } items-center gap-8 md:gap-16 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-500 bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/40 dark:border-blue-800/40 backdrop-blur-xl`}
+      } items-center gap-6 sm:gap-8 md:gap-16 p-4 sm:p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-500 bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/40 dark:border-blue-800/40 backdrop-blur-xl w-full max-w-full`}
     >
       {/* Media */}
-      <div className="md:w-1/2 w-full overflow-hidden rounded-2xl shadow-lg">
+      <div className="md:w-1/2 w-full overflow-hidden rounded-2xl shadow-lg max-w-full">
         <ParallaxMedia src={image} title={title} />
       </div>
 
       {/* Text Content */}
-      <div className="md:w-1/2 text-center md:text-left">
-        <h2 className="text-4xl md:text-5xl font-bold text-blue-700 dark:text-blue-400 mb-4">
+      <div className="md:w-1/2 w-full text-center md:text-left break-words max-w-full">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 dark:text-blue-400 mb-4 break-words max-w-full">
           {title}
         </h2>
-        <p className="text-xl text-gray-700 dark:text-gray-300 mb-3">
+        <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-3 break-words max-w-full">
           {description}
         </p>
-        <p className="text-xl text-gray-600 dark:text-gray-200 leading-relaxed mb-6">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-200 leading-relaxed mb-6 break-words max-w-full">
           {fullDescription}
         </p>
-        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
           {tech.map((t) => (
             <span
               key={t}
-              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-1.5 rounded-full text-sm font-medium shadow-sm"
+              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium shadow-sm break-words"
             >
               {t}
             </span>
@@ -161,16 +159,17 @@ const ProjectCard: React.FC<ProjectCardProps & { index: number }> = ({
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black py-24">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black py-12 sm:py-24 overflow-x-hidden">
       <motion.h2
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-6xl md:text-7xl font-extrabold text-center leading-tight md:leading-[1.2] mb-20 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300">
+        className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-center leading-tight md:leading-[1.2] mb-10 sm:mb-20 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500 dark:from-blue-400 dark:to-indigo-300 break-words max-w-full"
+      >
         Projects
       </motion.h2>
 
-      <section className="flex flex-col gap-24 px-6 md:px-20 max-w-7xl mx-auto">
+      <section className="flex flex-col gap-12 sm:gap-24 px-2 sm:px-6 md:px-20 max-w-7xl mx-auto w-full">
         {projects.map((p, i) => (
           <ProjectCard key={p.title} {...p} index={i} />
         ))}

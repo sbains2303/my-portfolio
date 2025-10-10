@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <div className="flex flex-col text-white scroll-smooth">
+    <div className="flex flex-col text-white scroll-smooth overflow-x-hidden">
       <Navbar />
 
       <main className="flex flex-col items-center justify-center flex-grow">

@@ -46,25 +46,25 @@ const experiences = [
   },
 ];
 
+
 export default function Experience() {
   return (
-    <section className="relative py-24 text-white">
-      {/* Stronger bold text styling */}
+    <section className="relative py-12 sm:py-24 text-white px-2 sm:px-6 overflow-x-hidden">
       <style>{`
         section strong {
-          color: #93c5fd; /* Tailwind blue-300 */
+          color: #93c5fd;
           font-weight: 800;
         }
       `}</style>
 
-      <h2 className="text-5xl font-bold text-center mb-16 text-blue-400">
+      <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8 sm:mb-16 text-blue-400 break-words max-w-full">
         Experience
       </h2>
-      <div className="relative max-w-6xl mx-auto">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 top-0 w-1 bg-blue-600 h-full transform -translate-x-1/2" />
+      <div className="relative max-w-6xl mx-auto w-full">
+        {/* Vertical line for desktop */}
+        <div className="hidden sm:block absolute left-1/2 top-0 w-1 bg-blue-600 h-full transform -translate-x-1/2" />
         {/* Timeline items */}
-        <div className="flex flex-col space-y-32 relative z-10">
+        <div className="flex flex-col space-y-12 sm:space-y-32 relative z-10 w-full">
           {experiences.map((exp, idx) => (
             <TimelineItem key={idx} exp={exp} index={idx} />
           ))}
@@ -78,13 +78,12 @@ function TimelineItem({ exp, index }: { exp: any; index: number }) {
   const isLeft = index % 2 === 0;
 
   return (
-    <div className="relative w-full flex items-start">
-      {/* Left side */}
-      <div className={`w-1/2 ${isLeft ? "flex justify-end pr-12" : ""}`}>
+    <div className="relative w-full flex flex-col sm:flex-row items-start">
+      {/* Desktop: left/right cards and timeline dot */}
+      <div className={`hidden sm:block sm:w-1/2 ${isLeft ? "flex justify-end pr-6" : ""}`}>
         {isLeft && <TimelineCard exp={exp} isLeft={isLeft} />}
       </div>
-      {/* Center dot */}
-      <div className="w-0 flex justify-center relative z-10">
+      <div className="hidden sm:flex w-0 justify-center relative z-10">
         <motion.div
           className="w-5 h-5 bg-blue-400 rounded-full border-2 border-blue-300"
           initial={{ scale: 0 }}
@@ -92,9 +91,12 @@ function TimelineItem({ exp, index }: { exp: any; index: number }) {
           transition={{ duration: 0.5, delay: index * 0.2 }}
         />
       </div>
-      {/* Right side */}
-      <div className={`w-1/2 ${!isLeft ? "flex justify-start pl-12" : ""}`}>
+      <div className={`hidden sm:block sm:w-1/2 ${!isLeft ? "flex justify-start pl-6" : ""}`}>
         {!isLeft && <TimelineCard exp={exp} isLeft={isLeft} />}
+      </div>
+      {/* Mobile: only show card full width */}
+      <div className="sm:hidden w-full">
+        <TimelineCard exp={exp} isLeft={false} />
       </div>
     </div>
   );
@@ -107,30 +109,30 @@ function TimelineCard({ exp, isLeft }: { exp: any; isLeft: boolean }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="relative bg-gray-800/80 backdrop-blur-lg border border-gray-700 rounded-2xl p-6 shadow-lg w-[90%]"
+      className="relative bg-gray-800/80 backdrop-blur-lg border border-gray-700 rounded-2xl p-4 sm:p-6 shadow-lg w-full max-w-full break-words"
     >
-      {/* Arrow */}
+      {/* Arrow (desktop only) */}
       <div
-        className={`absolute top-1/2 w-3 h-3 bg-gray-800 border border-gray-700 transform -translate-y-1/2 rotate-45 ${
+        className={`hidden sm:block absolute top-1/2 w-3 h-3 bg-gray-800 border border-gray-700 transform -translate-y-1/2 rotate-45 ${
           isLeft ? "right-[-6px]" : "left-[-6px]"
         }`}
       ></div>
 
       <h3
-        className="text-2xl font-semibold text-blue-300 mb-2"
+        className="text-xl sm:text-2xl font-semibold text-blue-300 mb-2 break-words max-w-full"
         dangerouslySetInnerHTML={{ __html: exp.title }}
       />
       <p
-        className="text-gray-300 italic mb-2"
+        className="text-gray-300 italic mb-2 break-words max-w-full"
         dangerouslySetInnerHTML={{ __html: exp.subtitle }}
       />
       <p
-        className="text-gray-400 mb-3"
+        className="text-gray-400 mb-3 break-words max-w-full"
         dangerouslySetInnerHTML={{ __html: exp.description }}
       />
 
       {exp.details && (
-        <ul className="list-disc list-inside text-gray-400 mb-4 space-y-1">
+        <ul className="list-disc list-inside text-gray-400 mb-4 space-y-1 break-words max-w-full">
           {exp.details.map((d: string, i: number) => (
             <li key={i} dangerouslySetInnerHTML={{ __html: d }} />
           ))}
@@ -141,7 +143,7 @@ function TimelineCard({ exp, isLeft }: { exp: any; isLeft: boolean }) {
         <img
           src={exp.image}
           alt={exp.title}
-          className="mt-3 rounded-lg shadow-lg w-full max-h-64 object-cover border border-gray-700"
+          className="mt-3 rounded-lg shadow-lg w-full max-h-48 sm:max-h-64 object-cover border border-gray-700"
         />
       )}
 
