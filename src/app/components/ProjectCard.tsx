@@ -59,19 +59,18 @@ const projects: ProjectCardProps[] = [
   },
 ];
 
-
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] }, // ✅ cubic-bezier easing
+    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
-
-// Component for parallax effect
+// ParallaxMedia component
 const ParallaxMedia = ({ src, title }: { src: string; title: string }) => {
+  // Only use framer-motion hooks in client components
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -80]);
 

@@ -23,7 +23,7 @@ export default function Contact() {
         <a
           href={`mailto:${email}`}
           className="bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-400 
-                     px-6 py-4 rounded-full text-white font-semibold text-lg transition-transform transform hover:scale-110"
+                     px-6 py-4 rounded-full text-white font-semibold text-lg transition-transform hover:scale-110"
         >
           {email}
         </a>
@@ -33,7 +33,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-400 
-                     p-4 rounded-full text-white text-2xl transition-transform transform hover:scale-110"
+                     p-4 rounded-full text-white text-2xl transition-transform hover:scale-110"
         >
           <FaLinkedin />
         </a>
@@ -43,7 +43,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-400 
-                     p-4 rounded-full text-white text-2xl transition-transform transform hover:scale-110"
+                     p-4 rounded-full text-white text-2xl transition-transform hover:scale-110"
         >
           <FaGithub />
         </a>

@@ -4,23 +4,23 @@ import { FiCode, FiGlobe, FiBarChart2, FiShield, FiCloud } from "react-icons/fi"
 
 const skillCategories = {
   "Programming Languages": {
-    icon: <FiCode size={28} className="text-blue-500" />,
+    icon: FiCode,
     skills: ["Python", "Java", "Golang", "C", "Haskell", "JavaScript", "TypeScript"],
   },
   "Web Development": {
-    icon: <FiGlobe size={28} className="text-blue-500" />,
+    icon: FiGlobe,
     skills: ["React.js", "Next.js", "Flask", "HTML", "CSS", "Tailwind CSS", "Jinja2", "Web3.js", "Solidity"],
   },
   "Data Science & Modeling": {
-    icon: <FiBarChart2 size={28} className="text-blue-500" />,
+    icon: FiBarChart2,
     skills: ["Pandas", "NumPy", "Matplotlib", "PyTorch", "ARIMA", "GARCH", "Machine Learning", "Deep Learning", "Data Visualization", "Financial Modeling"],
   },
   "Security & Embedded Systems": {
-    icon: <FiShield size={28} className="text-blue-500" />,
+    icon: FiShield,
     skills: ["Cryptography", "AES", "Firmware", "Embedded Systems", "Side-Channel Analysis", "PicoScope", "Network Security", "Cybersecurity"],
   },
   "Cloud & Blockchain": {
-    icon: <FiCloud size={28} className="text-blue-500" />,
+    icon: FiCloud,
     skills: ["AWS", "EC2", "Ethereum", "Blockchain", "Smart Contracts", "Ganache"],
   },
 };
@@ -51,13 +51,14 @@ export default function Skills() {
       <div className="w-full max-w-5xl px-4 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {Object.entries(skillCategories).map(([category, data], idx) => {
           const delay = idx * 0.2;
+          const Icon = data.icon;
           return (
             <div
               key={category}
               className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm dark:shadow-none flex flex-col items-center transition-colors duration-300 opacity-0 animate-fadeIn"
-              style={{ animationDelay: `${delay}s`, animationFillMode: "forwards" }}
+              style={{ animationDelay: `${delay}s` }}
             >
-              <div className="mb-3">{data.icon}</div>
+              <div className="mb-3"><Icon size={28} className="text-blue-500" /></div>
               <h3 className="text-xl font-medium text-blue-600 dark:text-blue-400 mb-4">{category}</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {data.skills.map((skill) => {
@@ -82,17 +83,6 @@ export default function Skills() {
           );
         })}
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation-name: fadeIn;
-          animation-duration: 0.5s;
-        }
-      `}</style>
     </section>
   );
 }

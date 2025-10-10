@@ -1,7 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const descriptors = ["Computer Science Graduate", "Software Engineer", "Full-Stack Developer"];
+const descriptors = [
+  "Computer Science Graduate",
+  "Software Engineer",
+  "Full-Stack Developer",
+];
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);

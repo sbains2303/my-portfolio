@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 
 const experiences = [
@@ -14,7 +13,7 @@ const experiences = [
       "Conducted over <strong>150 hours</strong> of literature review on UAV spoofing detection and payload delivery research.",
       "Simulated <strong>13+ hours</strong> of UAV missions in PX4 SITL and Gazebo, including a sinusoidal drift spoofing attack.",
       "Authored <strong>700+ lines of comparative code</strong> to benchmark against baseline neural networks.",
-      ],
+    ],
     image: "/Op1.png",
   },
   {
@@ -58,16 +57,12 @@ export default function Experience() {
         }
       `}</style>
 
-
       <h2 className="text-5xl font-bold text-center mb-16 text-blue-400">
         Experience
       </h2>
-	  
       <div className="relative max-w-6xl mx-auto">
         {/* Vertical line */}
         <div className="absolute left-1/2 top-0 w-1 bg-blue-600 h-full transform -translate-x-1/2" />
-
-
         {/* Timeline items */}
         <div className="flex flex-col space-y-32 relative z-10">
           {experiences.map((exp, idx) => (
@@ -88,7 +83,6 @@ function TimelineItem({ exp, index }: { exp: any; index: number }) {
       <div className={`w-1/2 ${isLeft ? "flex justify-end pr-12" : ""}`}>
         {isLeft && <TimelineCard exp={exp} isLeft={isLeft} />}
       </div>
-
       {/* Center dot */}
       <div className="w-0 flex justify-center relative z-10">
         <motion.div
@@ -98,7 +92,6 @@ function TimelineItem({ exp, index }: { exp: any; index: number }) {
           transition={{ duration: 0.5, delay: index * 0.2 }}
         />
       </div>
-
       {/* Right side */}
       <div className={`w-1/2 ${!isLeft ? "flex justify-start pl-12" : ""}`}>
         {!isLeft && <TimelineCard exp={exp} isLeft={isLeft} />}
