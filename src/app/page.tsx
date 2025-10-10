@@ -16,7 +16,7 @@ export default function Home() {
           <Hero />
         </section>
 
-        <section id="About" className="w-full min-h-screen relative">
+        <section id="About" className="w-full relative">
           <About />
         </section>
 
@@ -28,7 +28,7 @@ export default function Home() {
           <Experience />
         </section>
 
-        <section id="Skills" className="w-full min-h-screen relative">
+        <section id="Skills" className="w-full relative">
           <Skills />
         </section>
 
@@ -41,6 +41,6 @@ export default function Home() {
         © {new Date().getFullYear()} Saihajpreet Bains. All rights reserved.
       </footer>
     </div>
-
   );
 }
+
